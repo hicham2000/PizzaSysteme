@@ -15,7 +15,8 @@
                         @endif
 
                             <table class="table">
-                                <thead>
+                                @if(count($pizzas)>0)
+                                    <thead>
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">image</th>
@@ -31,8 +32,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($pizzas as $key=>$pizza)
-                                <tr class="Pizza{{$pizza->id}}">
+
+                                 @foreach($pizzas as $key=>$pizza)
+                                  <tr class="Pizza{{$pizza->id}}">
                                     <th scope="row">{{$key+1}}</th>
                                     <td><img src="{{Storage::url($pizza->image)}}" width="80px"></td>
                                     <td>{{$pizza->name}}</td>
@@ -41,10 +43,14 @@
                                     <td>{{$pizza->small_pizza_price}}</td>
                                     <td>{{$pizza->medium_pizza_price}}</td>
                                     <td>{{$pizza->large_pizza_price}}</td>
-                                    <td><button  class="btn btn-primary">Edit</button></td>
+                                    <td><a  class="btn btn-primary" href="{{route('pizza.edit',$pizza->id)}}">Edit</a></td>
                                     <td><a  class="btn btn-danger delete " href="{{route('pizza.delete',$pizza->id)}}">Delete</a></td>
-                                </tr>
-                                @endforeach
+                                  </tr>
+                                 @endforeach
+
+                                @else  <p>No Pizza to show</p>
+                                @endif
+
 
                                 </tbody>
                             </table>
