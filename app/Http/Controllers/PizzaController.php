@@ -100,5 +100,17 @@ class PizzaController extends Controller
     public function destroy($id)
     {
         //
+        $pizza = Pizza::find($id);
+        if($pizza){
+            $pizza->delete();
+            return redirect()->back();
+        }
+        else{
+            return response() -> json([
+                'status' => false,
+                'msd' => 'Not Deleted'
+            ]);
+        }
+
     }
 }

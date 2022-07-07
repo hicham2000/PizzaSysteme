@@ -25,6 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/pizzaa',[PizzaController::class,'index'])->name('pizza.index');
 Route::get('/pizza/create',[PizzaController::class,'create'])->name('pizza.create');
 Route::post('/pizza/store',[PizzaController::class,'store'])->name('pizza.store');
+Route::get('/pizza/delete/{id}',[PizzaController::class,'destroy'])->name('pizza.delete');
 
 
 
