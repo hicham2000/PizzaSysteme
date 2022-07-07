@@ -27,9 +27,9 @@ class PizzaStoreRequiest extends FormRequest
             //
             'name'=> 'required|string|min:3|max:40',
             'description'=>'required|min:3|max:40',
-            'small_pizza_price'=> 'required',
-            'medium_pizza_price'=> 'required',
-            'large_pizza_price'=> 'required',
+            'small_pizza_price'=> 'required|numeric',
+            'medium_pizza_price'=> 'required|numeric',
+            'large_pizza_price'=> 'required|numeric',
             'category'=>'required',
             'image'=>'required|mimes:png,jpeg,jpg'
 
