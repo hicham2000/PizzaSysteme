@@ -11,10 +11,13 @@
 
                 </nav>
                 <div class="card">
-                    <div class="card-header">Order</div>
+                    <div class="card-header">Order
+                        <a style="float: right" href="{{route('pizzas.index')}}" class="btn btn-primary">View Pizza</a>
+                        <a style="float: right " href="{{route('pizzas.create')}}" class="btn btn-primary me-3">Create Pizza</a>
+                    </div>
 
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table ">
                             <thead>
                             <tr>
                                 <th scope="col">User</th>
@@ -35,9 +38,7 @@
                             <tbody>
                             @foreach($orders as $order)
                             <tr>
-                                {{$TotalPrice = $order->pizza->small_pizza_price * $order->small_pizza +
-                                  $TotalPrice = $order->pizza->medium_pizza_price * $order->medium_pizza +
-                                  $TotalPrice = $order->pizza->large_pizza_price * $order->large_pizza}}
+
                                 <th>{{$order->user->name}}</th>
                                 <td>{{$order->user->email}}<br>{{$order->phone}}</td>
                                 <td>{{$order->date}}/{{$order->time}}</td>
@@ -45,7 +46,9 @@
                                 <td>{{$order->small_pizza}}</td>
                                 <td>{{$order->medium_pizza}}</td>
                                 <td>{{$order->large_pizza}}</td>
-                                <td>{{$TotalPrice}}</td>
+                                <td>{{$TotalPrice = $order->pizza->small_pizza_price * $order->small_pizza +
+                                  $TotalPrice = $order->pizza->medium_pizza_price * $order->medium_pizza +
+                                  $TotalPrice = $order->pizza->large_pizza_price * $order->large_pizza}}</td>
                                 <td>{{$order->message}}</td>
                                 <td>{{$order->status}}</td>
                                 <form action="{{route('user.status',$order->id)}}" method="post">

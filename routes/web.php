@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\UserOrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PizzaController;
@@ -15,15 +16,21 @@ use App\Http\Controllers\PizzaController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'pizzas','middleware' => ['Admin','auth']],function (){
+Route::get('/', [FrontendController::class, 'index'])->name('frontend');
+Route::get('/pizza/{id}', [FrontendController::class, 'show'])->name('pizza.show');
+Route::post('/pizza/store', [FrontendController::class, 'store'])->name('order.store');
+
+
+
+
+
+Route::group(['prefix' => 'admin','middleware' => ['Admin','auth']],function (){
     Route::get('',[PizzaController::class,'index'])->name('pizzas.index');
     Route::get('/create',[PizzaController::class,'create'])->name('pizzas.create');
     Route::post('/store',[PizzaController::class,'store'])->name('pizzas.store');
