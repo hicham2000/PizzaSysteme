@@ -26,7 +26,7 @@
                     <div class="card-header">Edit Pizza</div>
 
 
-                    <form action="{{route('pizza.update',$pizza->id)}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('pizzas.update',$pizza->id)}}" method="post" enctype="multipart/form-data">
                         @csrf
 
 

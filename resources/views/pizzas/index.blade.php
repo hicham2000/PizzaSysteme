@@ -3,11 +3,29 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-header">Menu</div>
+
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <a href="{{route('pizzas.index')}}" class="list-group-item list-group-item-action">View</a>
+                            <a href="{{route('pizzas.create')}}" class="list-group-item list-group-item-action">Create</a>
+                            <a href="{{route('user.order')}}" class="list-group-item list-group-item-action">Order</a>
+
+                        </ul>
+
+
+
+                    </div>
+                </div>
+
+            </div>
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">All Pizza</div>
                     <br>
-<a href="{{route("pizza.create")}}">                    <button class="btn btn-success" style="float: right">Add pizza</button>
+<a href="{{route("pizzas.create")}}">                    <button class="btn btn-success" style="float: right">Add pizza</button>
 </a>
                     <div class="card-body">
                         @if (session('message'))
@@ -45,7 +63,7 @@
                                     <td>{{$pizza->small_pizza_price}}</td>
                                     <td>{{$pizza->medium_pizza_price}}</td>
                                     <td>{{$pizza->large_pizza_price}}</td>
-                                    <td><a  class="btn btn-primary" href="{{route('pizza.edit',$pizza->id)}}">Edit</a></td>
+                                    <td><a  class="btn btn-primary" href="{{route('pizzas.edit',$pizza->id)}}">Edit</a></td>
                                     <td><a  class="btn btn-danger delete " data-bs-toggle="modal" data-bs-target="#exampleModal{{$pizza->id}}">Delete</a></td>
                                   </tr>
                                   <div class="modal fade" id="exampleModal{{$pizza->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -60,7 +78,7 @@
                                               </div>
                                               <div class="modal-footer">
                                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                  <a type="button" class="btn btn-danger" href="{{route('pizza.delete',$pizza->id)}}">Delete</a>
+                                                  <a type="button" class="btn btn-danger" href="{{route('pizzas.delete',$pizza->id)}}">Delete</a>
                                               </div>
                                           </div>
                                       </div>

@@ -9,8 +9,8 @@
 
                     <div class="card-body">
                         <ul class="list-group">
-                            <a href="{{route('pizza.index')}}" class="list-group-item list-group-item-action">View</a>
-                            <a href="{{route('pizza.create')}}" class="list-group-item list-group-item-action">Create</a>
+                            <a href="{{route('pizzas.index')}}" class="list-group-item list-group-item-action">View</a>
+                            <a href="{{route('pizzas.create')}}" class="list-group-item list-group-item-action">Create</a>
 
                         </ul>
 
@@ -41,7 +41,7 @@
                     <div class="card-header">Pizza</div>
 
 
-                    <form action="{{route('pizza.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('pizzas.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
 
 

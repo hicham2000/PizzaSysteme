@@ -18,7 +18,7 @@ class PizzaController extends Controller
     {
         //
         $pizzas = Pizza::paginate(5);
-        return view('pizza.index',compact('pizzas'));
+        return view('pizzas.index',compact('pizzas'));
 
     }
 
@@ -29,7 +29,7 @@ class PizzaController extends Controller
      */
     public function create()
     {
-        return view('pizza.create');
+        return view('pizzas.create');
         //
     }
 
@@ -42,7 +42,7 @@ class PizzaController extends Controller
     public function store(PizzaStoreRequiest $request)
     {
         //
-        $path = $request->image->store('public/pizza');
+        $path = $request->image->store('public/pizzas');
         Pizza::create([
             'name' => $request->name,
             'description' => $request->description,
@@ -53,7 +53,7 @@ class PizzaController extends Controller
             'image' => $path,
 
         ]);
-        return redirect()->route('pizza.index')->with('message','Pizza added succefuly ');
+        return redirect()->route('pizzas.index')->with('message','Pizza added succefuly ');
 
 
     }
@@ -81,10 +81,10 @@ class PizzaController extends Controller
         $pizza = Pizza::find($id);
 
         if (!$pizza){
-            return redirect()->route('pizza.index');
+            return redirect()->route('pizzas.index');
         }
         else{
-            return view('pizza.edit',compact('pizza'));
+            return view('pizzas.edit',compact('pizza'));
         }
     }
 
@@ -100,12 +100,12 @@ class PizzaController extends Controller
         //
         $pizza = Pizza::find($id);
           if (!$pizza){
-              return redirect()->route('pizza.index');
+              return redirect()->route('pizzas.index');
 
           }
           else{
               if ($request->has('image')){
-                  $path = $request->image->store('public/pizza');
+                  $path = $request->image->store('public/pizzas');
               }else{
                   $path = $pizza->image;
               }
@@ -118,7 +118,7 @@ class PizzaController extends Controller
               $pizza->category = $request->category;
               $pizza->image = $path;
               $pizza->save();
-              return redirect()->route('pizza.index')->with('message','Pizza updated succefuly ');
+              return redirect()->route('pizzas.index')->with('message','Pizza updated succefuly ');
 
           }
 
@@ -136,11 +136,11 @@ class PizzaController extends Controller
         $pizza = Pizza::find($id);
         if($pizza){
             $pizza->delete();
-            return redirect()->route('pizza.index')->with('message','Pizza deleted succefuly ');
+            return redirect()->route('pizzas.index')->with('message','Pizza deleted succefuly ');
 
         }
         else{
-            return redirect()->route('pizza.index');
+            return redirect()->route('pizzas.index');
 
 
         }
