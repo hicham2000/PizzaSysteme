@@ -8,14 +8,15 @@
                     <div class="card-header">Menu</div>
 
                     <div class="card-body">
-                        <ul class="list-group ">
+
                             <form action="{{route('frontend')}}" method="get">
                                 <a href="/" class="list-group-item-action list-group-item">All Pizzas</a>
                             <input type="submit" value="Vegetarian" name="category" class="list-group-item-action list-group-item">
                             <input type="submit" value="Nonvegetarian" name="category" class="list-group-item-action list-group-item">
                             <input type="submit" value="Traditional" name="category" class="list-group-item-action list-group-item">
                             </form>
-                        </ul>
+
+
 
 
 
@@ -24,7 +25,8 @@
             </div>
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Pizza</div>
+
+                    <div class="card-header">Pizza({{count($pizzas)}} pizza)</div>
 
                     <div class="card-body">
                         <div class="row">

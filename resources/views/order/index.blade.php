@@ -4,12 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item active" aria-current="page">Orders</li>
-                    </ol>
 
-                </nav>
                 <div class="card">
                     <div class="card-header">Order
                         <a style="float: right" href="{{route('pizzas.index')}}" class="btn btn-primary">View Pizza</a>
@@ -55,6 +50,7 @@
                                     @csrf
                                     <td>
                                         <input name="status" type="submit" value="Accepted" class="btn-primary btn btn-sm">
+
                                     </td>
                                     <td>
                                         <input name="status" type="submit" value="Rejected" class="btn-danger btn btn-sm">
@@ -64,8 +60,11 @@
                                     </td>
 
 
+
+
                                 </form>
                             </tr>
+
                             @endforeach
 
                             </tbody>

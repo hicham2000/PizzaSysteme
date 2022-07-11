@@ -15,9 +15,8 @@ class UserOrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::orderBy('id','DESC')->get();
-
-              return view('order.index',compact('orders'));
+        $orders = Order::orderBy('id','DESC');
+               return view('order.index',compact('orders'));
 
     }
 
@@ -84,16 +83,10 @@ class UserOrderController extends Controller
      */
     public function destroy($id)
     {
-        $orders =  Order::where('user_id', $id)->get()->all();
-        foreach ($orders as $order){
-            $order->delete();
-        }
-
+        //
         $user = User::find($id);
-       $user->delete();
-
-       return back()->with('message','user deleted successfuly');
-
+        $user->delete();
+        return back()->with('message','user deleted successfuly');
     }
 
     public function changeStatus(Request $request,$id){

@@ -24,7 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/', [FrontendController::class, 'index'])->name('frontend');
 Route::get('/pizza/{id}', [FrontendController::class, 'show'])->name('pizza.show');
-Route::post('/pizza/store', [FrontendController::class, 'store'])->name('order.store');
+Route::post('/pizza/store', [FrontendController::class, 'store'])->name('order.store')->middleware('auth');
 
 
 
@@ -39,6 +39,8 @@ Route::group(['prefix' => 'admin','middleware' => ['Admin','auth']],function (){
     Route::post('/update/{id}',[PizzaController::class,'update'])->name('pizzas.update');
     Route::get('/user/order',[UserOrderController::class,'index'])->name('user.order');
     Route::post('/user/status/{id}',[UserOrderController::class,'changeStatus'])->name('user.status');
+    Route::get('/customer',[UserOrderController::class,'users'])->name('customers');
+    Route::get('/user/delete/{id}',[UserOrderController::class,'destroy'])->name('user.delete');
 
 });
 

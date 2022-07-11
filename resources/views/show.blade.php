@@ -3,6 +3,16 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
+            @if(session('message'))
+                <div class="alert alert-success" role="alert">
+                    {{session('message')}}
+                </div>
+            @endif
+            @if(session('errmessage'))
+                <div class="alert alert-danger" role="alert">
+                    {{session('errmessage')}}
+                </div>
+            @endif
 
             <div class="col-md-8">
                 <div class="card">
@@ -28,6 +38,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
+
                     <div class="card-header">Menu</div>
 
                     <div class="card-body">
@@ -49,20 +60,11 @@
                                     <p class="text-center">
                                         <button class="btn btn-danger" type="submit">Make order</button>
                                     </p>
-                                    @if(session('message'))
-                                        <div class="alert alert-success" role="alert">
-                                            {{session('message')}}
-                                        </div>
-                                    @endif
-                                    @if(session('errmessage'))
-                                        <div class="alert alert-danger" role="alert">
-                                            {{session('errmessage')}}
-                                        </div>
-                                    @endif
+
                                 </div>
                             </form>
                         @else
-                            <p><a href="/login">Please Login to make order</a></p>
+                            <p><a href="/login" class=" btn btn-danger">Please Login to make order</a></p>
                         @endif
 
 
